@@ -13,16 +13,12 @@ public class Flower
     private String color;
     private double price;
     private int quantity;
-    
-    //declaration of a constant variable 
-    final double PRICE_PLAIN_PAPER = 0.08;
-    
+ 
     //Contructor without param
     public Flower()
     {
         name = null; //title = "";//empty string
-        color = null;
-        price = 0;
+        color = "";
         quantity = 0;
     } //end of constructor
     
@@ -31,7 +27,6 @@ public class Flower
     {
         this.name = name;
         this.color = color;
-        this.price = price;
         this.quantity = quantity;
     } //end of constructor
     
@@ -46,10 +41,6 @@ public class Flower
         return color;
     } //end of accessor 
     
-    public double getPrice()
-    {
-        return price ;
-    } //end of accessor
     
     public int getQuantity()
     {
@@ -57,22 +48,41 @@ public class Flower
     } //end of accessor
     
     //Mutator for all data members 
-    public void setFlower(String name, String color, double price, int quantity)
+    public void setFlower(String name, String color, int quantity)
     {
         this.name = name;
         this.color = color;
-        this.price = price;
         this.quantity = quantity;
         
     } //end of mutator
+    
+    //calcCost method
+    public double calcCost(String color)
+    {
+         double colorCost = 0.0;
+        
+        if(color.equalsIgnoreCase("R"))
+           colorCost = 80;
+           
+        else if (color.equalsIgnoreCase("W"))
+                 colorCost = 90;
+                 
+        else 
+           System.out.println("Incorrect input! Please choose the correct material!");
+           //end of if
+           
+            double cost = (quantity * colorCost);
+           
+           return cost;
+        }//end of calcCost
         
     //toString method 
     public String toString()
     {
         return ("Flower Name = " +name+ 
                 "\nColor =" + color+
-                 "\nPrice =" + price+
-                 "\nQuantity =" + quantity );
+                 "\nQuantity =" + quantity +
+                 "\nCost of =" + calcCost(color));
     }//end of toString 
   
     
